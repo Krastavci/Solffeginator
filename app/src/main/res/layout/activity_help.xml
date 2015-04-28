@@ -1,0 +1,155 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="hr.fer.solffeginator.HelpActivity"
+    android:background="@android:color/background_light"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView"
+
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/help_page_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/help_page_intro"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dip">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.50"
+                    android:text="@string/help_title_section1"
+                    android:onClick="onClickHelp"
+                    android:drawableBottom="@drawable/crtovlje"
+                    android:id="@+id/help_button1"
+                    android:background="@android:color/background_light" />
+
+                <TextView
+                    android:layout_weight="0.50"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_text_section1"
+                    android:id="@+id/textView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dip" >
+
+                <Button
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_title_section2"
+                    android:onClick="onClickHelp"
+                    android:drawableBottom="@drawable/takt"
+                    android:id="@+id/help_button2"
+                    android:background="@android:color/background_light" />
+
+                <TextView
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_text_section2"
+                    android:id="@+id/textView2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dip" >
+
+                <Button
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_title_section3"
+                    android:onClick="onClickHelp"
+                    android:drawableBottom="@drawable/kljuc"
+                    android:id="@+id/help_button3"
+                    android:background="@android:color/background_light" />
+
+                <TextView
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_text_section3"
+                    android:id="@+id/textView3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dip">
+
+                <Button
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_title_section4"
+                    android:onClick="onClickHelp"
+                    android:drawableBottom="@drawable/duzinanota"
+                    android:id="@+id/help_button4"
+                    android:background="@android:color/background_light" />
+
+                <TextView
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_text_section4"
+                    android:id="@+id/textView4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dip">
+
+                <Button
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_title_section5"
+                    android:onClick="onClickHelp"
+                    android:drawableBottom="@drawable/mjera"
+                    android:id="@+id/help_button5"
+                    android:background="@android:color/background_light" />
+
+                <TextView
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_text_section5"
+                    android:id="@+id/textView5" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

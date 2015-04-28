@@ -1,0 +1,279 @@
+<resources>
+    <string name="app_name">Solffeginator</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="help">Help</string>
+    <string name="title_activity_help">HelpActivity</string>
+    <string name="help_page_intro">Za daljnja objašnjenja osnova "glazbene pismenosti" kliknite na jednu od donjih slika.</string>
+    <string name="help_title_section1">Crtovlje</string>
+    <string name="help_text_section1">Crtovlje je "mjesto" u kojem se pišu note. Djeca u prvom razredu osnovne muzičke škole to mesto zovu: "notni stan". Sastoji se od pet horizontalnih crta i četiri praznine izmedju mjih.</string>
+    <string name="help_title_section2">Takt</string>
+    <string name="help_text_section2">Svako crtovlje je "podijeljeno" na taktove. U takt ide onoliki broj nota koliko određuje mjera. Svaki takt je omeđen dvjema vertikalnim tankim crtama. Te crte se zovu taktice.</string>
+    <string name="help_title_section3">Kljuc</string>
+    <string name="help_text_section3">Ključ se piše na početku crtovlja odnosno kompozicije. On određuje gdje će se koja nota nalaziti i u kojoj će se oktavi pisati. Svaki ključ obuhvata 1-3 oktave. Iako se pomoću pomoćnih crta...</string>
+    <string name="help_title_section4">Note</string>
+    <string name="help_text_section4">Nota je ime znaka koji, u zavisnosti od pozicije u crtovlju, oznacava muzicki zvuk. Note mogu da budu razlicite duzine...</string>
+    <string name="help_title_section5">Mjere</string>
+    <string name="help_text_section5">Mjera određuje koliko će doba biti u taktu i koja nota će trajati jednu dobu. Piše se na početku crtovlja/kompozicije tj. poslije ključa i predznaka, ako ih ima. Nekakve brže kompozicije...</string>
+    <string name="title_activity_topic">TopicActivity</string>
+    <string name="no_help_available">Ne postoje informacije na navedenu temu.</string>
+    <string name="topic_section1">
+        <![CDATA[
+         <p><h1>Crtovlje</h1></p>
+         <p>
+            Crtovlje je &quot;mjesto&quot; u kojem se pi&scaron;u note. Djeca u
+            prvom razredu osnovne muzi&#269;ke &scaron;kole to mesto zovu:
+            &quot;notni stan&quot;. Sastoji se od pet horizontalnih crta i
+            &#269;etiri praznine izmedju mjih. Ispod i iznad crtovlja se
+            jo&scaron; dodaju pomo&#263;ne crte po potrebi. Obi&#269;no se ne
+            dodaje vi&scaron;e od 4 pomo&#263;ne crte jer se tada ve&#263;
+            prelazi u drugi klju&#269; no nije pogre&scaron;ka ako se
+            napi&scaron;e vi&scaron;e pomo&#263;nih crta. Crtovlje izgleda
+            ovako:
+         </p>
+         <img src="crtovlje_pravo.gif">
+        ]]>
+    </string>
+    <string name="topic_section2">
+        <![CDATA[
+        <p><h1>Takt</h1></p>
+         <p>
+            Svako crtovlje je &quot;podijeljeno&quot; na taktove. U takt ide
+            onoliki broj koliko odre&#273;uje mjera. Svaki takt je ome&#273;en dvjema vertikalnim
+            tankim crtama. Te crte se zovu taktice. Na kraju cijele kompozicije
+            se nalazi dvostruka taktica (jedna tanka a jedna debela). Taktice
+            izgledaju ovako:
+         </p>
+         <img src="takt_pravo.gif">
+        ]]>
+    </string>
+    <string name="topic_section3">
+        <![CDATA[
+            <p><h1>Klju&#269;</h1></p>
+         <p>
+            Klju&#269; se pi&scaron;e na po&#269;etku crtovlja odnosno
+            kompozicije. On odre&#273;uje gdje &#263;e se koja nota nalaziti i
+            u kojoj &#263;e se oktavi pisati. Svaki klju&#269; obuhvata 1-3
+            oktave. Iako se pomo&#263;u pomo&#263;nih crta mo&#382;e
+            &quot;dogurati&quot; do bilo koje oktave, ni jedna kompozicija ne
+            obuhvata 5-6 oktava iz &#269;istog razloga &scaron;to ni jedan glas
+            a ni jedan instrument nema toliki raspon tonova.
+         </p>
+         <p>
+            Kompozicije za gitaru, a i za mnogo drugih instrumenata, se
+            pi&scaron;u u violinskom ili G klju&#269;u. On izgleda ovako:
+         </p>
+          <img src="kljuc_pravo.gif">
+         <p>
+            Nekada davno se je slovo G pisalo na ovaj nacin. Ako pogledate
+            pa&#382;ljivo, primeti&#263;ete da ovaj klju&#269; zavija oko druge
+            linije i time ozna&#269;ava da se nota napisana na drugoj liniji
+            zove G.
+         </p>
+         <p>
+            Raspored tonova u G klju&#269;u izgleda ovako:
+             (Po&#269;et &#263;u od tre&#263;e pomo&#263;ne crte jer nema
+            potrebe &scaron;ire pisati.)
+         </p>
+         <img src="raspored_pravo.gif">
+         <p>
+            Drugi klju&#269; koji koriste pogotovo klaviristi i basisti je bas
+            ili F klju&#269;. On izgleda ovako:
+         </p>
+          <img src="baskljuc_pravo.gif">
+         <p>
+            Nekada davno se je slovo F pisalo na ovaj nacin. Ako pogledate
+            pa&#382;ljivo, primeti&#263;ete da se nota F nalazi na
+            &#269;etvrtoj liniji izme&#273;u dve ta&#269;ke.
+         </p>
+         <p>
+            Raspored tonova u F klju&#269;u:
+         </p>
+         <img src="basraspored_pravo.gif">
+         <p>
+            Postoje i drugi klju&#269;evi, kao na primer ALTO ili TENOR, ali
+            oni se ne pojavljuju toliko &#269;esto.
+         </p>
+
+        ]]>
+    </string>
+    <string name="topic_section4">
+        <![CDATA[
+
+            <p><h1>Note</h1></p>
+         <p>
+            Nota je ime znaka koji, u zavisnosti od pozicije u crtovlju,
+            oznacava muzicki zvuk. Note mogu da budu razlicite duzine: <img src="duzinanota_pravo.gif">
+         </p>
+         <p>
+            Ovako izgleda me&#273;usobni odnosi trajanja:
+         </p>
+         <img src="medjusobnaduzinanota_pravo.gif">
+         <p>
+            *Ovdje je jo&scaron; dodana &scaron;ezdeset&#269;etvrtinka. To je
+            nota sa 4 &quot;repa&quot; ili &quot;zastavica.&quot;
+         </p>
+
+        ]]>
+    </string>
+    <string name="topic_section5">
+        <![CDATA[
+
+            <p><h1>Mjere</h1></p>
+     <p>
+            Mjera odre&#273;uje koliko &#263;e doba biti u taktu i koja nota
+            &#263;e trajati jednu dobu. Pi&scaron;e se na po&#269;etku
+            crtovlja/kompozicije tj. poslije klju&#269;a i predznaka, ako ih
+            ima. Nekakve br&#382;e kompozicije &#263;e se pisati u polovinskoj
+            ili &#269;etvrtinskoj mjeri dok &#263;e spore i duge skladbe biti
+            napisane u osminskoj ili &scaron;esnaestinskoj mjeri jer tu ima
+            vi&scaron;e dugih nota na raspolaganju.
+         </p>
+         <p>
+            Mjera se zapisuje ovako:
+         </p>
+         <img src="mjeraxx_pravo.gif">
+         <p>
+            Postoje dvije &quot;vrste&quot; mjera:
+         </p>
+         <p>
+               Jednostavne: to su one koje u jednom taktu imaju 2 , 3 ili 4
+               dobe. (dakle, gornji broj je 2, 3 ili 4)
+            </p>
+            <p">
+               Slo&#382;ene: to su one mjere koje u jednom taktu imaju 6, 9,
+               12... doba u jednom taktu.
+            </p>
+            <p>
+               <b>&#268;etvrtinska mjera:</b>
+               <p>
+                  &#268;etvrtinska mjera je mjera u kojoj nota &#269;etvrtinka
+                  <img src="cetvrt_pravo.gif"> traje
+                  jednu dobu tj. otkucaj. Zapisuje se u obliku x/4 a x
+                  mo&#382;e biti bilo koji broj. Na primer dvo&#269;etvrtinska
+                  mjera se pi&scaron;e 2/4, tro&#269;etvrtinska 3/4, itd.
+               </p>
+                Raspored trajanja nota u &#269;etvrtinskoj mjeri:
+
+               <p>
+                     Cijela nota (<img src="cela_pravo.gif">) traje 4 dobe
+                  </p>
+                  <p>
+                     Polovinka (<img src="pola_pravo.gif">) traje 2 dobe
+                  </p>
+                  <p>
+                     &#268;etvrtinka (<img src="cetvrt_pravo.gif">) traje 1 dobu
+                  </p>
+                  <p>
+                     Osminka (<img src="osmina_pravo.gif">) traje pola dobe
+                  </p>
+                  <p>
+                     &Scaron;esnaestinka (<img src="sestnaestina_pravo.gif">) traje &#269;etvrt dobe
+                  </p>
+               </p>
+               <p>
+                  U tekstu koji slijedi napisane su samo jednostavne mjere jer
+                  slo&#382;ene nisu tako &quot;obavezne&quot;. Slo&#382;ene
+                  mjere se pojavljuju u kojekakvim valcerima i tome
+                  sli&#269;no.
+               </p>
+                <u>4/4 mjera</u>
+               <p>
+                  U 4/4 mjeri nota &#269;etvrtinka traje jednu dobu a u jednom
+                  taktu ima 4 dobe. Zna&#269;i da vi od svih nota mo&#382;ete
+                  kombinirati bilo kako da bi &quot;napunili&quot; jedan takt.
+                  Evo nekoliko primjera 4/4 takta:
+               </p>
+               <img src="cetiricetiri_pravo.gif">
+                <u>3/4 mjera</u>
+               <p>
+                  Ovdje ima 3 dobe u jednom taktu. Evo nekoliko primjera:
+               </p>
+               <img src="tricetiri_pravo.gif">
+               <p>
+                  Mislim da za 2-&#269;etvrtinsku itd. ne moram pisati jer ste
+                  vjerojatno shvatili sistem.
+               </p>
+               <b>Osminska mjera</b>
+               <p>
+                  Raspored trajanja nota u osminskoj mjeri:
+               </p>
+
+                  <p>
+                     Cijela nota (<img src="cela_pravo.gif">) traje 8 doba
+                  </p>
+                  <p>
+                     Polovinka (<img src="pola_pravo.gif">) traje 4 dobe
+                  </p>
+                  <p>
+                     &#268;etvrtinka (<img src="cetvrt_pravo.gif">) traje 2 dobe
+                  </p>
+                  <p>
+                     Osminka (<img src="osmina_pravo.gif">) traje jednu dobu
+                  </p>
+                  <p>
+                     &Scaron;esnaestinka (<img src="sestnaestina_pravo.gif">) traje pola dobe
+                  </p>
+                  <p>
+                     Tridesetdruginka (<img src="tridesetdvojka_pravo.gif">) traje &#269;etvrt dobe
+                  </p>
+
+               <p>
+                  Dakle, mislim da ste i sami vidjeli da u osminskoj mjeri sve
+                  note traju duplo vi&scaron;e nego u &#269;etvrtinskoj mjeri.
+               </p>
+                <u>Dvo-osminska mjera:</u>
+               <p>
+                  Evo mislim da ne moram ni&scaron;ta obja&scaron;njavat jedino
+                  &#263;u napisati par primjera...
+               </p>
+               <img src="dvaosam_pravo.gif">
+                <u>Tro-osminska mjera</u>
+               <p>
+                  Nema potrebe i&scaron;ta pisati...
+               </p>
+                <u>&#268;etvero-osminska</u>
+               <p>
+                  Tako&#273;er...
+               </p>
+                <u>&Scaron;estero-osminska mjera</u>
+               <p>
+                  Ovako, ovo je evo jedna slo&#382;ena mjera koja je napisana.
+                  Od slo&#382;enih mjera naj&#269;e&scaron;&#263;e su ova,
+                  Devet-osminska (9/8) i dvanaest-osminska (12/8) Evo par
+                  primjera:
+               </p>
+               <img src="sestosam_pravo.gif">
+               <b>Polovinska mjera</b>
+               <p>
+                  Raspored trajanja nota u polovinskoj mjeri:
+               </p>
+                  <p>
+                     Cijela nota (<img src="cela_pravo.gif">) traje 2 dobe
+                  </p>
+                  <p>
+                     Polovinka (<img src="pola_pravo.gif">) traje 1 dobu
+                  </p>
+                  <p>
+                     &#268;etvrtinka (<img src="cetvrt_pravo.gif">) traje pola dobe
+                  </p>
+                  <p>
+                     Osminka (<img src="osmina_pravo.gif">) traje &#269;etvrt dobe
+                  </p>
+
+               <p>
+                  Evo i ovdje ste vjerojatno ve&#263; primijetili kako sve note
+                  traju duplo manje nego u &#269;etvrtinskoj mjeri. Ovdje nije
+                  zapisan ni jedan primjer a ni jedna mjera nije posebno
+                  obra&#273;ena jer ste do sad ve&#263; stvarno trebali
+                  shvatiti. Iz istog razloga nije napisano za
+                  &scaron;esnaestinsku mjeru.
+               </p>
+
+        ]]>
+    </string>
+    <string name="title_activity_tapping">Tapping</string>
+
+    <string name="hello_world">Hello world!</string>
+
+</resources>
