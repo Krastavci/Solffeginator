@@ -1,20 +1,19 @@
 package hr.fer.solffeginator;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.support.v7.app.ActionBarActivity;
+import android.content.pm.ActivityInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -28,19 +27,6 @@ import hr.fer.solffeginator.other.TimeToken;
 import hr.fer.solffeginator.parser.Parser;
 import hr.fer.solffeginator.threads.PlayThread;
 import hr.fer.solffeginator.views.CustomView;
-
-
-import android.app.ActionBar.LayoutParams;
-import android.content.pm.ActivityInfo;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.widget.Gallery;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-
-import android.view.View.OnClickListener;
 
 
 public class TappingActivity extends ActionBarActivity {
@@ -68,10 +54,9 @@ public class TappingActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tapping2);
 
-
         timeList = new LinkedList<TimeToken>();
         canBeTapped = false;
-        parser = new Parser(getApplicationContext(), "vjezba1.txt");
+        parser = new Parser(getApplicationContext(), getIntent().getStringExtra("exerciseName"));
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // prozor ce biti landscape
 
         // visina + sirina ekrana
