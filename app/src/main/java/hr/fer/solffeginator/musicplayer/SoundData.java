@@ -4,11 +4,13 @@ package hr.fer.solffeginator.musicplayer;
  * Created by Valerio on 4/26/2015.
  */
 
+import android.content.res.AssetManager;
 import android.media.AudioFormat;
+
 import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+
+import hr.fer.solffeginator.LevelSelectActivity;
 
 
 public class SoundData {
@@ -22,12 +24,15 @@ public class SoundData {
     public SoundData(String soundName) {
         identifier = soundName;
 
-        File sounds = new File("storage/emulated/0/appSounds/" + identifier);
+        AssetManager am = LevelSelectActivity.res.getAssets();
+
+       // File sounds = new File("storage/emulated/0/appSounds/" + identifier);
 
         byte [] header = null;
 
         try {
-            DataInputStream dis = new DataInputStream(new FileInputStream(sounds));
+           // DataInputStream dis = new DataInputStream(new FileInputStream(sounds));
+            DataInputStream dis = new DataInputStream(am.open("music/" + soundName));
 
             int index = 0;
 

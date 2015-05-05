@@ -3,6 +3,7 @@ package hr.fer.solffeginator;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class LevelSelectActivity extends ActionBarActivity {
 
     public static String exerciseName;
+    public static Resources res = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +32,11 @@ public class LevelSelectActivity extends ActionBarActivity {
         background.setAlpha(150);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        AssetManager am = getResources().getAssets();
+        res = getResources();
+        AssetManager am = res.getAssets();
         String [] files = new String[0];
         try {
-            files = am.list("");
+            files = am.list("tappingExercises");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,7 +53,7 @@ public class LevelSelectActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(LevelSelectActivity.this, TappingActivity.class);
-                exerciseName = selectArea.getItemAtPosition(position).toString();
+                exerciseName ="tappingExercises/" + selectArea.getItemAtPosition(position).toString();
                 intent.putExtra("exerciseName", exerciseName);
                 startActivity(intent);
             }
