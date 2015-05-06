@@ -275,5 +275,6 @@
     <string name="title_activity_tapping">Tapping</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_vrijednost_nota">vrijednost_nota</string>
 
 </resources>

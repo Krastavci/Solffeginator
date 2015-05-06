@@ -10,6 +10,7 @@ import android.view.View;
 
 public class MainActivity extends ActionBarActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,12 @@ public class MainActivity extends ActionBarActivity {
 
     public void onClickUhvatiRitam(View v) {
         Intent intent = (new Intent(this, TappingActivity.class));
+        startActivity(intent);
+        return;
+    }
+
+    public void onKolikoVrijediNotaTa(View v) {
+        Intent intent = (new Intent(this, vrijednost_nota.class));
         startActivity(intent);
         return;
     }
