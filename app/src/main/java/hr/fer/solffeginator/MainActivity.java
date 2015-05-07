@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
         switch (id) {
             case R.id.action_settings: return true;
             case R.id.help:
-                Intent intent = (new Intent(this, HelpActivity.class));
+                Intent intent = new Intent(this, HelpActivity.class);
                 startActivity(intent);
                 return true;
         }
@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onClickUhvatiRitam(View v) {
-        Intent intent = (new Intent(this, TappingActivity.class));
+        Intent intent = (new Intent(this, LevelSelectActivity.class));
         startActivity(intent);
         return;
     }

@@ -275,6 +275,11 @@
     <string name="title_activity_tapping">Tapping</string>
 
     <string name="hello_world">Hello world!</string>
+<<<<<<< HEAD
     <string name="title_activity_vrijednost_nota">vrijednost_nota</string>
+=======
+    <string name="title_activity_level_select">LevelSelectActivity</string>
+    <string name="select_excercise_prompt">Izaberi vježbu!</string>
+>>>>>>> origin/master
 
 </resources>
