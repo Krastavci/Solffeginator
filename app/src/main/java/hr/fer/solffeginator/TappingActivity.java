@@ -171,7 +171,7 @@ public class TappingActivity extends ActionBarActivity {
     public void onClickStart(View view) {
         stats = new Statistics();
         MusicPlayer musicPlayer = new MusicPlayer();
-        musicPlayer.render(Sound.DRUM);
+        musicPlayer.render(Sound.ORGAN, Sound.METRONOME_LIGHT, Sound.METRONOME_HEAVY);
         PlayThread playThread = new PlayThread(parser.getSkladba(), musicPlayer);
         new Thread(playThread).start();
         time = System.currentTimeMillis();

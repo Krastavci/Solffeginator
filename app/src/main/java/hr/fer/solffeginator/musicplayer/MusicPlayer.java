@@ -3,12 +3,12 @@ package hr.fer.solffeginator.musicplayer;
 /**
  * Created by Valerio on 4/26/2015.
  */
-import java.util.HashMap;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.media.AudioManager;
 import android.media.AudioTrack;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MusicPlayer {
@@ -48,6 +48,10 @@ public class MusicPlayer {
         t.setPriority(Thread.MAX_PRIORITY);
         t.setDaemon(true);
         t.start();
+
+    }
+
+    public void togglePlay(Sound s){
 
     }
 

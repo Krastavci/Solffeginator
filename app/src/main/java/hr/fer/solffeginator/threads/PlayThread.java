@@ -7,6 +7,7 @@ import java.util.Iterator;
 import hr.fer.solffeginator.musical.Nota;
 import hr.fer.solffeginator.musical.Skladba;
 import hr.fer.solffeginator.musical.Takt;
+import hr.fer.solffeginator.musicplayer.Metronome;
 import hr.fer.solffeginator.musicplayer.MusicPlayer;
 import hr.fer.solffeginator.musicplayer.Sound;
 
@@ -28,14 +29,16 @@ public class PlayThread implements Runnable{
 
     @Override
     public void run() {
-
+        Metronome m = new Metronome(skladba.getDivident(), skladba.getTrajanje()/skladba.getDivisor());
+        m.toggle();
         try {
-            Thread.sleep(3000, 0);
+            Thread.sleep(skladba.getTrajanje()*2, 0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         Iterator<Takt> taktovi = skladba.iterator();
+
 
         while (taktovi.hasNext()) {
 
@@ -46,7 +49,7 @@ public class PlayThread implements Runnable{
 
                 Nota tmpNota = note.next();
                 Log.d("Prije:", Long.toString(System.currentTimeMillis()));
-                musicPlayer.play(Sound.DRUM, tmpNota.getNota().getValue().floatValue());
+                musicPlayer.play(Sound.ORGAN, tmpNota.getNota().getValue().floatValue());
                 Log.d("Poslije:", Long.toString(System.currentTimeMillis()));
 
                 Log.d("Vrijeme pocetka svirke:", Long.toString(System.currentTimeMillis()));
@@ -61,6 +64,7 @@ public class PlayThread implements Runnable{
             }
 
         }
+        m.toggle();
 
     }
 
