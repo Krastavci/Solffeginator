@@ -32,14 +32,13 @@
             android:label="@string/title_activity_tapping" >
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".vrijednost_nota"
             android:label="@string/title_activity_vrijednost_nota" >
-=======
+        </activity>
+        <activity
             android:name=".LevelSelectActivity"
             android:label="@string/title_activity_level_select" >
->>>>>>> origin/master
-        </activity>
+            </activity>
     </application>
 
 </manifest>
