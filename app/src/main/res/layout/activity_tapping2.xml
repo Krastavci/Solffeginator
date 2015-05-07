@@ -7,7 +7,7 @@
     android:orientation="horizontal" >
 
 
-    <ImageButton
+  <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="300px"
         android:layout_height="100px"
@@ -17,5 +17,4 @@
         android:gravity="left"
         android:src="@drawable/start"
         android:onClick="onClickStart" />
-
 </RelativeLayout>

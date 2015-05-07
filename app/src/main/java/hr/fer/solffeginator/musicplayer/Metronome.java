@@ -6,7 +6,7 @@ package hr.fer.solffeginator.musicplayer;
 public class Metronome implements Runnable{
     private int measure;
     private long milis;
-    private int volume = 50;
+    private int volume = 90;
 
     private boolean isRunning = false;
 

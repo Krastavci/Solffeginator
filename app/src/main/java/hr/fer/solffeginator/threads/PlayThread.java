@@ -9,7 +9,6 @@ import hr.fer.solffeginator.musical.Skladba;
 import hr.fer.solffeginator.musical.Takt;
 import hr.fer.solffeginator.musicplayer.Metronome;
 import hr.fer.solffeginator.musicplayer.MusicPlayer;
-import hr.fer.solffeginator.musicplayer.Sound;
 
 /**
  * Created by Valerio on 4/26/2015.
@@ -49,7 +48,7 @@ public class PlayThread implements Runnable{
 
                 Nota tmpNota = note.next();
                 Log.d("Prije:", Long.toString(System.currentTimeMillis()));
-                musicPlayer.play(Sound.ORGAN, tmpNota.getNota().getValue().floatValue());
+                //musicPlayer.play(Sound.ORGAN, tmpNota.getNota().getValue().floatValue());
                 Log.d("Poslije:", Long.toString(System.currentTimeMillis()));
 
                 Log.d("Vrijeme pocetka svirke:", Long.toString(System.currentTimeMillis()));

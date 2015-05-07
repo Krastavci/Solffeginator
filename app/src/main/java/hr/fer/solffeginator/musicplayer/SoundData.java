@@ -76,6 +76,10 @@ public class SoundData {
         return data;
     }
 
+    public int getResolution(){
+        return resolution;
+    }
+
     public short[] getShortData() throws IOException{
         if(resolution != 16){
             throw new IOException();
@@ -110,8 +114,6 @@ public class SoundData {
         return false;
     }
 
-
-
     public int getChannel() {
         if(channel==2){
             return AudioFormat.CHANNEL_OUT_STEREO;
@@ -130,5 +132,50 @@ public class SoundData {
 
     public int getDuration() {
         return duration;
+    }
+
+    public byte[] getPartialByteData(int offset, int size) throws IOException{
+        if(resolution != 8){
+            throw new IOException();
+        }
+
+        try {
+            byte[] retVal = new byte[size];
+            byte[] data = getByteData();
+            for (int i = 0; i < retVal.length; i++) {
+                retVal[i] = data[offset + i];
+            }
+
+            return retVal;
+        } catch(ArrayIndexOutOfBoundsException ex){
+            System.err.println("Invalid arguments for partial entry.");
+        }
+
+        return null;
+    }
+
+    public short[] getPartialShortData(int offset, int size) throws IOException{
+        if(resolution != 16){
+            throw new IOException();
+        }
+
+        try {
+            short[] retVal = new short[size];
+            short[] data = getShortData();
+            for (int i = 0; i < retVal.length; i++) {
+                retVal[i] = data[offset + i];
+            }
+
+            return retVal;
+        } catch(ArrayIndexOutOfBoundsException ex){
+            System.err.println("Invalid arguments for partial entry.");
+        }
+
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Resolution: " + resolution;
     }
 }

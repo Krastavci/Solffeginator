@@ -277,5 +277,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_level_select">LevelSelectActivity</string>
     <string name="select_excercise_prompt">Izaberi vježbu!</string>
+    <string name="restart_text">Restart</string>
+    <string name="next_level">Next</string>
 
 </resources>

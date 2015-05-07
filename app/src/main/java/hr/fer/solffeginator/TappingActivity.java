@@ -1,5 +1,6 @@
 package hr.fer.solffeginator;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Iterator;
@@ -21,6 +23,7 @@ import java.util.Queue;
 import hr.fer.solffeginator.info.Statistics;
 import hr.fer.solffeginator.musical.Nota;
 import hr.fer.solffeginator.musical.Takt;
+import hr.fer.solffeginator.musicplayer.LoopPlayer;
 import hr.fer.solffeginator.musicplayer.MusicPlayer;
 import hr.fer.solffeginator.musicplayer.Sound;
 import hr.fer.solffeginator.other.TimeToken;
@@ -38,8 +41,9 @@ public class TappingActivity extends ActionBarActivity {
     private Statistics stats;
     private boolean mBooleanIsPressed;
     private long clickStartTime;
-    private static final long EXCELENT = 100;
-    private static final long GOOD = 300;
+    private static final long EXCELENT = 2000;
+    private static final long GOOD = 4000;
+    private LoopPlayer lp;
 
     RelativeLayout mainLayout; // linija
     private boolean canBeTapped;
@@ -127,19 +131,20 @@ public class TappingActivity extends ActionBarActivity {
     public boolean onTouchEvent(MotionEvent event) {
         if(!timeList.isEmpty() && canBeTapped) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-
                 mBooleanIsPressed = true;
                 clickStartTime = System.currentTimeMillis();
-
+                lp.start();
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
 
                 if (mBooleanIsPressed) {
                     mBooleanIsPressed = false;
+                    lp.stop();
 
                     TimeToken tempTimeToken = timeList.poll();
 
                     long currentTime = System.currentTimeMillis();
                     long mistakeDifference = tempTimeToken.getSumOfAbsoluteDifferences(clickStartTime, currentTime);
+
                     Log.d("Calc time start:", Long.toString(tempTimeToken.getTimeBefore()));
                     Log.d("Calc time finish:", Long.toString(tempTimeToken.getTimeAfter()));
                     Log.d("Real time start:", Long.toString(clickStartTime));
@@ -156,7 +161,13 @@ public class TappingActivity extends ActionBarActivity {
             }
         }
         else {
-            Toast.makeText(this, "Green: " + stats.getGreen() + ", Yellow: " + stats.getYellow() + ", Red: " + stats.getRed(), Toast.LENGTH_LONG).show();
+            Dialog d = new Dialog(this);
+            d.setTitle("Result");
+            d.setContentView(R.layout.result_display);
+            TextView tv = (TextView)d.findViewById(R.id.result);
+            tv.setText("Green: " + stats.getGreen() + ", Yellow: " + stats.getYellow() + ", Red: " + stats.getRed());
+            tv.setTextSize(30);
+            d.show();
             canBeTapped = false;
         }
 
@@ -169,6 +180,7 @@ public class TappingActivity extends ActionBarActivity {
      * @param view
      */
     public void onClickStart(View view) {
+        lp = new LoopPlayer(Sound.ORGAN);
         stats = new Statistics();
         MusicPlayer musicPlayer = new MusicPlayer();
         musicPlayer.render(Sound.ORGAN, Sound.METRONOME_LIGHT, Sound.METRONOME_HEAVY);
@@ -177,6 +189,23 @@ public class TappingActivity extends ActionBarActivity {
         time = System.currentTimeMillis();
         timeList = createTimeList();
         canBeTapped = true;
+
+        Toast t = Toast.makeText(getApplicationContext(), "READY", Toast.LENGTH_SHORT);
+        t.show();
+        try {
+            Thread.sleep(parser.getSkladba().getTrajanje());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        t = Toast.makeText(getApplicationContext(), "SET", Toast.LENGTH_SHORT);
+        t.show();
+        /*try {
+            Thread.sleep(parser.getSkladba().getTrajanje());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        t = Toast.makeText(getApplicationContext(), "GO", Toast.LENGTH_SHORT);
+        t.show();*/
     }
 
     /**
