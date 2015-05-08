@@ -42,18 +42,21 @@ public class LevelSelectActivity extends ActionBarActivity {
         }
         final ListView selectArea = (ListView) findViewById(R.id.excercise_areas);
         ArrayList<String> list = new ArrayList<>();
+        final ArrayList<String> realNames = new ArrayList<>();
+        int counter = 1;
         for(String f: files){
-            if(!f.endsWith(".txt")) {
-                continue;
+            if(f.endsWith(".txt")) {
+                list.add("Vježba " + counter);
+                realNames.add(f);
+                counter++;
             }
-            list.add(f);
         }
         selectArea.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, list));
         selectArea.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(LevelSelectActivity.this, TappingActivity.class);
-                exerciseName ="tappingExercises/" + selectArea.getItemAtPosition(position).toString();
+                exerciseName ="tappingExercises/" + realNames.get(position);
                 intent.putExtra("exerciseName", exerciseName);
                 startActivity(intent);
             }

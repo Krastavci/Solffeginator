@@ -1,6 +1,5 @@
 package hr.fer.solffeginator;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -13,7 +12,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Iterator;
@@ -41,8 +39,8 @@ public class TappingActivity extends ActionBarActivity {
     private Statistics stats;
     private boolean mBooleanIsPressed;
     private long clickStartTime;
-    private static final long EXCELENT = 2000;
-    private static final long GOOD = 4000;
+    private static final long EXCELENT = 500;
+    private static final long GOOD = 1000;
     private LoopPlayer lp;
 
     RelativeLayout mainLayout; // linija
@@ -161,14 +159,7 @@ public class TappingActivity extends ActionBarActivity {
             }
         }
         else {
-            Dialog d = new Dialog(this);
-            d.setTitle("Result");
-            d.setContentView(R.layout.result_display);
-            TextView tv = (TextView)d.findViewById(R.id.result);
-            tv.setText("Green: " + stats.getGreen() + ", Yellow: " + stats.getYellow() + ", Red: " + stats.getRed());
-            tv.setTextSize(30);
-            d.show();
-            canBeTapped = false;
+
         }
 
 
@@ -184,8 +175,8 @@ public class TappingActivity extends ActionBarActivity {
         stats = new Statistics();
         MusicPlayer musicPlayer = new MusicPlayer();
         musicPlayer.render(Sound.ORGAN, Sound.METRONOME_LIGHT, Sound.METRONOME_HEAVY);
-        PlayThread playThread = new PlayThread(parser.getSkladba(), musicPlayer);
-        new Thread(playThread).start();
+        PlayThread playThread = new PlayThread(parser.getSkladba(), musicPlayer, this);
+        playThread.execute();
         time = System.currentTimeMillis();
         timeList = createTimeList();
         canBeTapped = true;
@@ -199,13 +190,14 @@ public class TappingActivity extends ActionBarActivity {
         }
         t = Toast.makeText(getApplicationContext(), "SET", Toast.LENGTH_SHORT);
         t.show();
-        /*try {
+        try {
             Thread.sleep(parser.getSkladba().getTrajanje());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         t = Toast.makeText(getApplicationContext(), "GO", Toast.LENGTH_SHORT);
-        t.show();*/
+        t.show();
+
     }
 
     /**
@@ -214,7 +206,7 @@ public class TappingActivity extends ActionBarActivity {
      */
     public LinkedList<TimeToken> createTimeList() {
         LinkedList<TimeToken> times = new LinkedList<TimeToken>();
-        long duration = time + 3000;
+        long duration = time + parser.getSkladba().getTrajanje()*2;
         Iterator<Takt> taktovi = parser.getSkladba().iterator();
         while(taktovi.hasNext()) {
             Takt tmpTakt = taktovi.next();
@@ -242,4 +234,11 @@ public class TappingActivity extends ActionBarActivity {
         return temp;
     }
 
+    public Statistics getStats() {
+        return stats;
+    }
+
+    public void setCanBeTapped(boolean val){
+        canBeTapped = val;
+    }
 }
