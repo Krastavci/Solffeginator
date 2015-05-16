@@ -7,10 +7,16 @@ public class LoopPlayer implements Runnable{
     private boolean playing = false;
     private MusicPlayer mp;
     private Sound playedSound;
+    private Integer tone;
 
     public LoopPlayer(Sound s){
         mp = new MusicPlayer();
         playedSound = s;
+    }
+
+    public void start(int tone){
+        this.tone = tone;
+        start();
     }
 
     public void start(){
@@ -31,10 +37,14 @@ public class LoopPlayer implements Runnable{
 
     @Override
     public void run() {
-        mp.playStart(playedSound);
-        while(playing){
-            mp.playMiddle(playedSound);
+        if(tone == null){
+            tone = 7;
         }
-        mp.playEnd(playedSound);
+        mp.playStart(playedSound, tone);
+        while(playing){
+            mp.playMiddle(playedSound, tone);
+        }
+        mp.playEnd(playedSound, tone);
+        tone = null;
     }
 }

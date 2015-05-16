@@ -154,16 +154,23 @@ public class SoundData {
         return null;
     }
 
-    public short[] getPartialShortData(int offset, int size) throws IOException{
+    public short[] getPartialShortData(int offset, int size, int tone) throws IOException{
         if(resolution != 16){
             throw new IOException();
         }
 
+        double coefficient = 1/Math.pow(2, (tone - 9)/(double)12);
+
         try {
-            short[] retVal = new short[size];
+            short[] retVal = new short[(int)(size * coefficient) - (int)(2/(coefficient))];
             short[] data = getShortData();
+
             for (int i = 0; i < retVal.length; i++) {
-                retVal[i] = data[offset + i];
+                retVal[i] = data[offset + (int)(i/coefficient)];
+            }
+
+            if(retVal == null){
+                throw new IllegalStateException("Well, this is wrong.");
             }
 
             return retVal;

@@ -22,6 +22,7 @@ public class MusicPlayer {
     private AudioTrack at = null;
     private SoundData currentData = null;
     private static final double PRECISION = 0.005;
+    private static final int DEFAULT_TONE = 1;
 
     public MusicPlayer(){
         if(readSounds == null){
@@ -51,12 +52,16 @@ public class MusicPlayer {
     }
 
     void playStart(Sound s){
+        playStart(s, DEFAULT_TONE);
+    }
+
+    void playStart(Sound s, int tone){
         SoundData sd = getSoundData(s);
         at = audioTrackInit(sd);
         at.play();
         if(sd.getResolution() == 16){
             try {
-                short[] realData = sd.getPartialShortData(0, (int) (sd.getDataLength() * PRECISION));
+                short[] realData = sd.getPartialShortData(0, (int) (sd.getDataLength() * PRECISION), tone);
                 at.write(realData, 0, realData.length);
                 //at.release();
             } catch (IOException ex){
@@ -75,12 +80,16 @@ public class MusicPlayer {
     }
 
     void playMiddle(Sound s){
+        playStart(s, DEFAULT_TONE);
+    }
+
+    void playMiddle(Sound s, int tone){
         SoundData sd = getSoundData(s);
-        AudioTrack at = audioTrackInit(sd);
+        at = audioTrackInit(sd);
         at.play();
         if(sd.getResolution() == 16){
             try {
-                short[] realData = sd.getPartialShortData(sd.getDataLength()/2, (int) (sd.getDataLength() * PRECISION));
+                short[] realData = sd.getPartialShortData(sd.getDataLength()/2, (int) (sd.getDataLength() * PRECISION), tone);
                 at.write(realData, 0, realData.length);
                // at.release();
             } catch (IOException ex){
@@ -98,13 +107,17 @@ public class MusicPlayer {
     }
 
     void playEnd(Sound s){
+        playStart(s, DEFAULT_TONE);
+    }
+
+    void playEnd(Sound s, int tone){
         SoundData sd = getSoundData(s);
-        AudioTrack at = audioTrackInit(sd);
+        at = audioTrackInit(sd);
         at.play();
         if(sd.getResolution() == 16){
             try {
                 short[] realData = sd.getPartialShortData(sd.getDataLength()-(int)(sd.getDataLength()*PRECISION*3-1)
-                        , (int) (sd.getDataLength() * PRECISION*3)-1);
+                        , (int) (sd.getDataLength() * PRECISION*3)-1, tone);
                 at.write(realData, 0, realData.length);
             } catch (IOException ex){
                 ex.printStackTrace();

@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -181,7 +180,7 @@ public class TappingActivity extends ActionBarActivity {
         timeList = createTimeList();
         canBeTapped = true;
 
-        Toast t = Toast.makeText(getApplicationContext(), "READY", Toast.LENGTH_SHORT);
+        /*Toast t = Toast.makeText(getApplicationContext(), "READY", Toast.LENGTH_SHORT);
         t.show();
         try {
             Thread.sleep(parser.getSkladba().getTrajanje());
@@ -196,7 +195,7 @@ public class TappingActivity extends ActionBarActivity {
             e.printStackTrace();
         }
         t = Toast.makeText(getApplicationContext(), "GO", Toast.LENGTH_SHORT);
-        t.show();
+        t.show();*/
 
     }
 
