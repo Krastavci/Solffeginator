@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Iterator;
@@ -42,6 +43,8 @@ public class TappingActivity extends ActionBarActivity {
     private static final long EXCELENT = 500;
     private static final long GOOD = 1000;
     private LoopPlayer lp;
+    private int points = 0;
+    private int maxPoints = 0;
 
     RelativeLayout mainLayout; // linija
     private boolean canBeTapped;
@@ -75,6 +78,8 @@ public class TappingActivity extends ActionBarActivity {
         CustomView customview = new CustomView(this, height, width, parser.getSkladba());
         mainLayout.addView(customview);
 
+        ((TextView)(findViewById(R.id.point_area))).setText("Bodovi: " + points);
+        ((TextView)(findViewById(R.id.instruction))).setText("Klikni na START i počni svirati nakon znaka \"GO\"");
     }
 
     protected final static int getResourceID (final String resName, final String resType, final Context ctx)
@@ -95,7 +100,17 @@ public class TappingActivity extends ActionBarActivity {
         }
     }
 
+    public int getPoints() {
+        return points;
+    }
 
+    public int getMaxPoints() {
+        return maxPoints;
+    }
+
+    public LoopPlayer getLp() {
+        return lp;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -148,6 +163,10 @@ public class TappingActivity extends ActionBarActivity {
                     Log.d("Real time start:", Long.toString(clickStartTime));
                     Log.d("Real time finish", Long.toString(currentTime));
 
+                    points += GOOD - mistakeDifference;
+                    maxPoints += GOOD;
+                    ((TextView)(findViewById(R.id.point_area))).setText("Bodovi: " + points);
+
                     if (mistakeDifference < EXCELENT) {
                         stats.hitGreen();
                     } else if (mistakeDifference < GOOD) {
@@ -171,6 +190,9 @@ public class TappingActivity extends ActionBarActivity {
      * @param view
      */
     public void onClickStart(View view) {
+        points = 0;
+        maxPoints = 0;
+        ((TextView)(findViewById(R.id.point_area))).setText("Bodovi: " + points);
         lp = new LoopPlayer(Sound.ORGAN);
         stats = new Statistics();
         MusicPlayer musicPlayer = new MusicPlayer();

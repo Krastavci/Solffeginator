@@ -81,7 +81,7 @@ public class PlayThread extends AsyncTask<Void, Void, Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         d = new Dialog(caller);
-        d.setTitle("Result");
+        d.setTitle("Rezultat");
         d.setCanceledOnTouchOutside(false);
         d.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
@@ -90,11 +90,22 @@ public class PlayThread extends AsyncTask<Void, Void, Void>{
             }
         });
         d.setContentView(R.layout.result_display);
+        try{
+            caller.getLp().stop();
+        } catch (Exception ignorable){
+
+        }
 
         TextView tv = (TextView) d.findViewById(R.id.result);
-        tv.setText("Green: " + caller.getStats().getGreen() + ",\n" +
-                "Yellow: " + caller.getStats().getYellow() + ",\n" +
-                "Red: " + caller.getStats().getRed());
+        tv.setText("Ostvareni broj bodova:\n"
+                + caller.getPoints() + "/" + caller.getMaxPoints() + "\n");
+        if(caller.getPoints()/(double)caller.getMaxPoints() > 0.8){
+            tv.setText(tv.getText().toString() + "Bravo!");
+        } else if(caller.getPoints()/(double)caller.getMaxPoints() > 0.4){
+            tv.setText(tv.getText().toString() + "Nije loše!");
+        } else {
+            tv.setText(tv.getText().toString() + "Trebaš više vježbe.");
+        }
         tv.setTextSize(30);
 
         Button restart =(Button) d.findViewById(R.id.restart_button);

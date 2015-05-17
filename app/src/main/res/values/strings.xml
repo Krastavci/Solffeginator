@@ -277,8 +277,8 @@
     <string name="hello_world">Hello world!</string>
 	<string name="title_activity_level_select">LevelSelectActivity</string>
     <string name="select_excercise_prompt">Izaberi vježbu!</string>
-	<string name="restart_text">Restart</string>
-    <string name="next_level">Next</string>
+	<string name="restart_text">Pokušaj ponovno</string>
+    <string name="next_level">Slijedeća vježba</string>
     <string name="title_activity_vrijednost_nota">vrijednost_nota</string>
 
 </resources>

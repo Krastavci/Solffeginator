@@ -32,14 +32,13 @@ public class LoopPlayer implements Runnable{
             throw new IllegalStateException("Tried to stop method that wasn't playing.");
         } else {
             playing = false;
-            tone = null;
         }
     }
 
     @Override
     public void run() {
         if(tone == null){
-            tone = 0;
+            tone = 11;
         }
         mp.playStart(playedSound, tone);
         while(playing){
