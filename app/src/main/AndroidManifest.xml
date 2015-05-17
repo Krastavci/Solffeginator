@@ -33,7 +33,8 @@
         </activity>
         <activity
             android:name=".vrijednost_nota"
-            android:label="@string/title_activity_vrijednost_nota" >
+            android:label="@string/title_activity_vrijednost_nota"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".LevelSelectActivity"
