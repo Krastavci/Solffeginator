@@ -55,6 +55,7 @@ public class MusicPlayer {
         playStart(s, DEFAULT_TONE);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     void playStart(Sound s, int tone){
         SoundData sd = getSoundData(s);
         at = audioTrackInit(sd);
@@ -83,6 +84,7 @@ public class MusicPlayer {
         playStart(s, DEFAULT_TONE);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     void playMiddle(Sound s, int tone){
         SoundData sd = getSoundData(s);
         at = audioTrackInit(sd);
@@ -98,7 +100,7 @@ public class MusicPlayer {
         } else {
             try {
                 byte[] realData = sd.getPartialByteData(sd.getDataLength()/2, (int) (sd.getDataLength() * PRECISION));
-                at.write(realData, 0, realData.length);
+                at.write(new short[]{0}, 0, 1);
                // at.release();
             } catch (IOException ex){
                 ex.printStackTrace();
@@ -110,6 +112,7 @@ public class MusicPlayer {
         playStart(s, DEFAULT_TONE);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     void playEnd(Sound s, int tone){
         SoundData sd = getSoundData(s);
         at = audioTrackInit(sd);

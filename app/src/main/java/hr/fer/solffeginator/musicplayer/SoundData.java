@@ -159,13 +159,18 @@ public class SoundData {
             throw new IOException();
         }
 
-        double coefficient = 1/Math.pow(2, (tone - 9)/(double)12);
+        double coefficient = 1/Math.pow(2, (tone - 9 - 2)/(double)12);
 
         try {
-            short[] retVal = new short[(int)(size * coefficient) - (int)(2/(coefficient))];
+            short[] retVal = new short[(int)((size) * coefficient)];
             short[] data = getShortData();
 
+            short start = 0;
+
             for (int i = 0; i < retVal.length; i++) {
+                if(start == 0){
+                    start += data[offset + (int)(i/coefficient)];
+                }
                 retVal[i] = data[offset + (int)(i/coefficient)];
             }
 
