@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.Iterator;
 
+import hr.fer.solffeginator.LevelSelectActivity;
 import hr.fer.solffeginator.R;
 import hr.fer.solffeginator.TappingActivity;
 import hr.fer.solffeginator.musical.Nota;
@@ -113,6 +114,13 @@ public class PlayThread extends AsyncTask<Void, Void, Void>{
             @Override
             public void onClick(View v) {
                 d.dismiss();
+            }
+        });
+        ((Button)d.findViewById(R.id.next_level_button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LevelSelectActivity.instance.callNext();
+                caller.finish();
             }
         });
 

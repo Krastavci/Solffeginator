@@ -163,7 +163,9 @@ public class TappingActivity extends ActionBarActivity {
                     Log.d("Real time start:", Long.toString(clickStartTime));
                     Log.d("Real time finish", Long.toString(currentTime));
 
-                    points += GOOD - mistakeDifference;
+                    if(GOOD > mistakeDifference) {
+                        points += GOOD - mistakeDifference;
+                    }
                     maxPoints += GOOD;
                     ((TextView)(findViewById(R.id.point_area))).setText("Bodovi: " + points);
 

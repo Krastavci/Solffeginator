@@ -22,11 +22,16 @@ public class LevelSelectActivity extends ActionBarActivity {
 
     public static String exerciseName;
     public static Resources res = null;
+    private static int lastCalled = 0;
+    public static LevelSelectActivity instance;
+
+    private ArrayList<String> realNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_select);
+        instance = this;
 
         Drawable background = findViewById(R.id.select_level).getBackground();
         background.setAlpha(150);
@@ -42,7 +47,7 @@ public class LevelSelectActivity extends ActionBarActivity {
         }
         final ListView selectArea = (ListView) findViewById(R.id.excercise_areas);
         ArrayList<String> list = new ArrayList<>();
-        final ArrayList<String> realNames = new ArrayList<>();
+        realNames = new ArrayList<>();
         int counter = 1;
         for(String f: files){
             if(f.endsWith(".txt")) {
@@ -55,6 +60,7 @@ public class LevelSelectActivity extends ActionBarActivity {
         selectArea.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                lastCalled = position;
                 Intent intent = new Intent(LevelSelectActivity.this, TappingActivity.class);
                 exerciseName ="tappingExercises/" + realNames.get(position);
                 intent.putExtra("exerciseName", exerciseName);
@@ -64,6 +70,18 @@ public class LevelSelectActivity extends ActionBarActivity {
 
     }
 
+    public void callNext(){
+        Intent intent = new Intent(LevelSelectActivity.this, TappingActivity.class);
+        if(realNames==null){
+            throw new IllegalStateException();
+        } else if(realNames.size() < lastCalled + 1){
+
+        } else {
+            exerciseName = "tappingExercises/" + realNames.get(++lastCalled);
+            intent.putExtra("exerciseName", exerciseName);
+            startActivity(intent);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
