@@ -21,7 +21,7 @@ public class MusicPlayer {
     private static final float DEFAULT_DURATION = 1;
     private AudioTrack at = null;
     private SoundData currentData = null;
-    private static final double PRECISION = 0.005;
+    private static final double PRECISION = 0.0025;
     private static final int DEFAULT_TONE = 1;
 
     public MusicPlayer(){

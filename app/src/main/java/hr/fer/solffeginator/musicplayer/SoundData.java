@@ -11,7 +11,6 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 import hr.fer.solffeginator.App;
-import hr.fer.solffeginator.LevelSelectActivity;
 
 
 public class SoundData {
@@ -160,10 +159,10 @@ public class SoundData {
             throw new IOException();
         }
 
-        double coefficient = 1/Math.pow(2, (tone - 9 - 2)/(double)12);
+        double coefficient = 1/Math.pow(2, (tone - 9 - 3)/(double)12);
 
         try {
-            short[] retVal = new short[(int)((size) * coefficient)];
+            short[] retVal = new short[(int)((double)(size+1/2) * coefficient)];
             short[] data = getShortData();
 
             short start = 0;
