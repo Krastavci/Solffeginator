@@ -13,6 +13,7 @@ import java.text.ParseException;
 
 import hr.fer.solffeginator.exceptions.ParserException;
 import hr.fer.solffeginator.info.Info;
+import hr.fer.solffeginator.info.Ljestvica;
 import hr.fer.solffeginator.musical.*;
 
 /**
@@ -63,19 +64,46 @@ public class Parser {
         Takt takt = new Takt();
         try {
             while((line=br.readLine())!=null) {
-                Info infoNota = Info.getInfo(line);
-                Log.d("Parsirana nota:", infoNota.getName());
-                takt.dodajNotu(new Nota(infoNota, (long) (infoNota.getValue()/mjeraNumeric * trajanjeNumeric)));
-                mjeraTemp += infoNota.getValue();
-                Log.d("Trenutna mjera", Double.toString(mjeraTemp));
-                if (mjeraTemp.compareTo(mjeraNumeric) == 0) {
-                    Log.d("Dodajem takt", "Idemo");
-                    skladba.dodajTakt(takt);
-                    takt = new Takt();
-                    mjeraTemp = 0.;
+                if (line.length()==1) {
+                    Info infoNota = Info.getInfo(line);
+                    Log.d("Parsirana nota:", infoNota.getName());
+                    takt.dodajNotu(new Nota(infoNota, (long) (infoNota.getValue()/mjeraNumeric * trajanjeNumeric)));
+                    mjeraTemp += infoNota.getValue();
+                    Log.d("Trenutna mjera", Double.toString(mjeraTemp));
+                    if (mjeraTemp.compareTo(mjeraNumeric) == 0) {
+                        Log.d("Dodajem takt", "Idemo");
+                        skladba.dodajTakt(takt);
+                        takt = new Takt();
+                        mjeraTemp = 0.;
+                    }
+                    else if (mjeraTemp.compareTo(mjeraNumeric) > 0) {
+                        throw new ParserException("Pogreska u parsiranju.");
+                    }
                 }
-                else if (mjeraTemp.compareTo(mjeraNumeric) > 0) {
-                    throw new ParserException("Pogreska u parsiranju.");
+                else {
+                    String[] arr = line.split(",");
+                    Info infoNota = Info.getInfo(arr[0]);
+                    Ljestvica ljestvica = Ljestvica.getLjestvica(arr[1]);
+                    int visina = 1;
+                    try {
+                        visina = Integer.parseInt(arr[2]);
+                    } catch (NumberFormatException e) {
+                        Log.d("Parsiranje integera", "Neuspjelo");
+                        visina = 1;
+                    }
+                    Log.d("Parsirana nota:", infoNota.getName());
+                    takt.dodajNotu(new Nota(infoNota, (long) (infoNota.getValue()/mjeraNumeric * trajanjeNumeric), ljestvica, visina));
+                    mjeraTemp += infoNota.getValue();
+                    Log.d("Trenutna mjera", Double.toString(mjeraTemp));
+                    if (mjeraTemp.compareTo(mjeraNumeric) == 0) {
+                        Log.d("Dodajem takt", "Idemo");
+                        skladba.dodajTakt(takt);
+                        takt = new Takt();
+                        mjeraTemp = 0.;
+                    }
+                    else if (mjeraTemp.compareTo(mjeraNumeric) > 0) {
+                        throw new ParserException("Pogreska u parsiranju.");
+                    }
                 }
 
             }

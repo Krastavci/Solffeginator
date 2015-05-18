@@ -51,7 +51,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onKolikoVrijediNotaTa(View v) {
-        Intent intent = (new Intent(this, vrijednost_nota.class));
+        Intent intent = (new Intent(this, VrijednostNota.class));
+        startActivity(intent);
+        return;
+    }
+
+    public void onClickPogodiMelodiju(View v) {
+        Intent intent = (new Intent(this, PogodiMelodiju.class));
         startActivity(intent);
         return;
     }

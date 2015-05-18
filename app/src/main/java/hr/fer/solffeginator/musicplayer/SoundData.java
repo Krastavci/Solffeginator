@@ -10,6 +10,7 @@ import android.media.AudioFormat;
 import java.io.DataInputStream;
 import java.io.IOException;
 
+import hr.fer.solffeginator.App;
 import hr.fer.solffeginator.LevelSelectActivity;
 
 
@@ -24,7 +25,7 @@ public class SoundData {
     public SoundData(String soundName) {
         identifier = soundName;
 
-        AssetManager am = LevelSelectActivity.res.getAssets();
+        AssetManager am = App.getContext().getResources().getAssets();
 
        // File sounds = new File("storage/emulated/0/appSounds/" + identifier);
 
