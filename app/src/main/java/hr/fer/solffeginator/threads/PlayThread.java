@@ -13,6 +13,8 @@ import java.util.Iterator;
 import hr.fer.solffeginator.LevelSelectActivity;
 import hr.fer.solffeginator.R;
 import hr.fer.solffeginator.TappingActivity;
+import hr.fer.solffeginator.info.Record;
+import hr.fer.solffeginator.info.SQLiteRecords;
 import hr.fer.solffeginator.musical.Nota;
 import hr.fer.solffeginator.musical.Skladba;
 import hr.fer.solffeginator.musical.Takt;
@@ -81,6 +83,14 @@ public class PlayThread extends AsyncTask<Void, Void, Void>{
 
     @Override
     protected void onPostExecute(Void aVoid) {
+        SQLiteRecords db = new SQLiteRecords(caller);
+        String level = caller.getExerciseName().substring(caller.getExerciseName().lastIndexOf('/')+1, caller.getExerciseName().lastIndexOf('.'));
+        Record record = new Record(null, caller.getPoints(), level);
+        if (db.isBetterThanRecord(SQLiteRecords.TABLE_TAPPING, record)) {
+            db.addRecord(SQLiteRecords.TABLE_TAPPING, record);
+            Log.d("Rekord:", "Dodao rekord");
+        }
+
         d = new Dialog(caller);
         d.setTitle("Rezultat");
         d.setCanceledOnTouchOutside(false);

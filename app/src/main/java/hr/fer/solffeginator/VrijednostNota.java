@@ -3,6 +3,7 @@ package hr.fer.solffeginator;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Random;
+
+import hr.fer.solffeginator.dialog.Dialogs;
+import hr.fer.solffeginator.info.Record;
+import hr.fer.solffeginator.info.SQLiteRecords;
 
 
 public class VrijednostNota extends ActionBarActivity {
@@ -72,6 +77,10 @@ public class VrijednostNota extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.showRecord) {
+            Dialogs d = new Dialogs(this, null);
+            if (d != null) d.getRecordDialog().show();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -94,13 +103,8 @@ public class VrijednostNota extends ActionBarActivity {
         zgoditak=0;
         rekord=0;
         rekord_view.setText(Double.toString(rekord));
+    }
 
-
-
-
-
-
-        }
     public void onButtonClick(View v) {
         ImageButton slika_note=(ImageButton) v;
         String bText=slika_note.getContentDescription().toString();
@@ -126,6 +130,14 @@ public class VrijednostNota extends ActionBarActivity {
             sesnaestinka.setEnabled(false);
         }
         if (Double.parseDouble(zadana_vrijednost.getText().toString())<Double.parseDouble(trenutna_vrijednost.getText().toString())){
+
+            SQLiteRecords db = new SQLiteRecords(this);
+            Record record = new Record(null, zgoditak, null);
+            if (db.isBetterThanRecord(SQLiteRecords.TABLE_VRIJEDNOSTNOTA, record)) {
+                db.addRecord(SQLiteRecords.TABLE_VRIJEDNOSTNOTA, record);
+                Log.d("Record:", record.toString());
+            }
+
             trenutna_vrijednost.setTextColor(Color.parseColor("#FF0000"));
             zgoditak=0;
             score.setText(Integer.toString(zgoditak));

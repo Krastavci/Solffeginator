@@ -7,10 +7,12 @@ public class Record {
 
     private String date;
     private int points;
+    private String level;
 
-    public Record(String date, int points) {
+    public Record(String date, int points, String level) {
         this.date = date;
         this.points = points;
+        this.level = level;
     }
 
     public String getDate() {
@@ -19,6 +21,15 @@ public class Record {
 
     public int getPoints() {
         return points;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(points) + "\t" + level + "\t" + date + "\n";
     }
 
 }

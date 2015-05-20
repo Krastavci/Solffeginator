@@ -16,7 +16,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_weight="1"
-        android:onClick="clickA"/>
+        android:onClick="clickImage"/>
     <!--android:background="@android:color/transparent"-->
 
     <ImageButton
@@ -30,7 +30,7 @@
         android:layout_below="@+id/odg1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="clickB"/>
+        android:onClick="clickImage"/>
     <ImageButton
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
@@ -42,7 +42,7 @@
         android:layout_below="@+id/odg2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="clickC"/>
+        android:onClick="clickImage"/>
 
     <ImageButton
         android:layout_marginLeft="50dp"
@@ -55,7 +55,7 @@
         android:layout_below="@+id/odg3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="clickD"/>
+        android:onClick="clickImage"/>
 
     <ImageButton
         android:layout_marginLeft="50dp"

@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import hr.fer.solffeginator.R;
+import hr.fer.solffeginator.dialog.Dialogs;
+import hr.fer.solffeginator.info.Record;
+import hr.fer.solffeginator.info.SQLiteRecords;
 import hr.fer.solffeginator.musical.Skladba;
 import hr.fer.solffeginator.musicplayer.LoopPlayer;
 import hr.fer.solffeginator.musicplayer.Sound;
@@ -39,25 +42,19 @@ public class PogodiMelodiju extends ActionBarActivity {
     private int TOCAN;
     private String correctPicName;
 
+    private int trenutniRezultat;
+    private int rekord;
+
+    // svi IDovi slika (vjezba)
+    private ArrayList<Integer> imageIds;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pogodi_melodiju);
 
-        addListenerOnButtons();
-
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // prozor ce biti landscape
-    }
-
-    public void addListenerOnButtons() {
-
-        // gumb za sviranje
-        gumb = (ImageButton) findViewById(R.id.gumb);
-
-        // svi IDovi slika (vjezba)
-        ArrayList<Integer> imageIds = new ArrayList<Integer>();
-
+        imageIds = new ArrayList<Integer>();
         imageIds.add(R.drawable.vj1);
         imageIds.add(R.drawable.vj2);
         imageIds.add(R.drawable.vj3);
@@ -70,6 +67,18 @@ public class PogodiMelodiju extends ActionBarActivity {
         imageIds.add(R.drawable.vj10);
         imageIds.add(R.drawable.vj11);
         imageIds.add(R.drawable.vj12);
+
+        trenutniRezultat = 0;
+
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // prozor ce biti landscape
+
+        addListenerOnButtons();
+    }
+
+    public void addListenerOnButtons() {
+
+        // gumb za sviranje
+        gumb = (ImageButton) findViewById(R.id.gumb);
 
         ImageButton odg;
         Random generator = new Random();
@@ -142,47 +151,25 @@ public class PogodiMelodiju extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_pogodi_melodiju, menu);
         return true;
     }
 
-    public void clickA(View view){
+    public void clickImage(View view){
         if(view.getId()==TOCAN){
             Toast.makeText(PogodiMelodiju.this, "TOČNO", Toast.LENGTH_SHORT).show();
+            trenutniRezultat++;
             addListenerOnButtons();
         }
         else{
             Toast.makeText(PogodiMelodiju.this, "NETOČNO", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void clickB(View view){
-        if(view.getId()==TOCAN){
-            Toast.makeText(PogodiMelodiju.this, "TOČNO", Toast.LENGTH_SHORT).show();
-            addListenerOnButtons();
-        }
-        else{
-            Toast.makeText(PogodiMelodiju.this, "NETOČNO", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void clickC(View view){
-        if(view.getId()==TOCAN){
-            Toast.makeText(PogodiMelodiju.this, "TOČNO", Toast.LENGTH_SHORT).show();
-            addListenerOnButtons();
-        }
-        else{
-            Toast.makeText(PogodiMelodiju.this, "NETOČNO", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void clickD(View view){
-        if(view.getId()==TOCAN){
-            Toast.makeText(PogodiMelodiju.this, "TOČNO", Toast.LENGTH_SHORT).show();
-            addListenerOnButtons();
-        }
-        else{
-            Toast.makeText(PogodiMelodiju.this, "NETOČNO", Toast.LENGTH_SHORT).show();
+            SQLiteRecords db = new SQLiteRecords(this);
+            Record record = new Record(null, trenutniRezultat, null);
+            if (db.isBetterThanRecord(SQLiteRecords.TABLE_POGODIMELODIJU, record)) {
+                db.addRecord(SQLiteRecords.TABLE_POGODIMELODIJU, record);
+                Log.d("Rekord", "Dodajem rekord");
+            }
+            trenutniRezultat = 0;
         }
     }
 
@@ -206,6 +193,10 @@ public class PogodiMelodiju extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        else if (id == R.id.showRecord) {
+            Dialogs d = new Dialogs(this, null);
+            if (d != null) d.getRecordDialog().show();
         }
 
         return super.onOptionsItemSelected(item);

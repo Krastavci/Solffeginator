@@ -279,6 +279,7 @@
     <string name="select_excercise_prompt">Izaberi vježbu!</string>
 	<string name="restart_text">Pokušaj ponovno</string>
     <string name="next_level">Slijedeća vježba</string>
+    <string name="show_record">Prikazi rekord</string>
     <string name="title_activity_vrijednost_nota">vrijednost_nota</string>
     <string name="title_activity_pogodi_melodiju">PogodiMelodiju</string>
 

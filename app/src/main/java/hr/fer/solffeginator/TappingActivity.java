@@ -1,5 +1,6 @@
 package hr.fer.solffeginator;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -19,6 +20,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import hr.fer.solffeginator.dialog.Dialogs;
 import hr.fer.solffeginator.info.Statistics;
 import hr.fer.solffeginator.musical.Nota;
 import hr.fer.solffeginator.musical.Takt;
@@ -46,6 +48,8 @@ public class TappingActivity extends ActionBarActivity {
     private int points = 0;
     private int maxPoints = 0;
 
+    private String exerciseName;
+
     RelativeLayout mainLayout; // linija
     private boolean canBeTapped;
 
@@ -61,6 +65,7 @@ public class TappingActivity extends ActionBarActivity {
 
         timeList = new LinkedList<TimeToken>();
         canBeTapped = false;
+        exerciseName = getIntent().getStringExtra("exerciseName");
         parser = new Parser(getApplicationContext(), getIntent().getStringExtra("exerciseName"));
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // prozor ce biti landscape
 
@@ -129,6 +134,11 @@ public class TappingActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        else if (id == R.id.showRecord) {
+            String eName = exerciseName.substring(exerciseName.lastIndexOf('/')+1, exerciseName.lastIndexOf('.'));
+            Dialogs d = new Dialogs(this, eName);
+            if (d != null) d.getRecordDialog().show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -264,5 +274,9 @@ public class TappingActivity extends ActionBarActivity {
 
     public void setCanBeTapped(boolean val){
         canBeTapped = val;
+    }
+
+    public String getExerciseName() {
+        return exerciseName;
     }
 }
